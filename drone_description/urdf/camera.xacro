@@ -6,24 +6,17 @@
   <xacro:macro name="camera_macro"
     params="namespace parent_link robot_namespace camera_name image_topic_name camera_info_topic_name
       frame_rate horizontal_fov image_width image_height image_format min_distance
-      max_distance noise_mean noise_stddev enable_visual k1 k2 k3 p1 p2 cx cy *inertial *origin">
+      max_distance noise_mean noise_stddev enable_visual k1 k2 k3 p1 p2 cx cy *origin *visual *material">
     <joint name="${namespace}/${camera_name}_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent_link}" />
       <child link="${namespace}/${camera_name}_link" />
     </joint>
     <link name="${namespace}/${camera_name}_link">
-      <xacro:insert_block name="inertial" />
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <box size="0.008 0.02 0.012"/>
-        </geometry>
-        <xacro:material_orange/>
-      </visual>
+      <xacro:insert_block name="visual" />
     </link>
     <gazebo reference="${namespace}/${camera_name}_link">
-      <material>Gazebo/Orange</material>
+      <xacro:insert_block name="material" />
       <sensor type="camera" name="camera">
         <camera name="head">
           <horizontal_fov>${horizontal_fov}</horizontal_fov>

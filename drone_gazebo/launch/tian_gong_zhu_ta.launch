@@ -1,6 +1,5 @@
 <launch>
-  <arg name="mav_name" default="dji_m100"/>
-  <arg name="suffix" default="downward_camera"/>
+  <arg name="model" default="dji_m100_downward_camera"/>
   <arg name="world_name" default="tian_gong_zhu_ta"/>
   <arg name="x" default="0"/>
   <arg name="y" default="0"/>
@@ -19,10 +18,10 @@
     <arg name="use_sim_time" value="$(arg use_sim_time)" />
   </include>
 
-  <group ns="$(arg mav_name)">
+  <group ns="$(arg model)">
     <include file="$(find drone_gazebo)/launch/spawn_mav.launch">
-      <arg name="mav_name" value="$(arg mav_name)" />
-      <arg name="model" value="$(find drone_description)/urdf/$(arg mav_name)_$(arg suffix).xacro" />
+      <arg name="model" value="$(arg model)" />
+      <arg name="namespace" value="dji_m100" />
       <arg name="is_kinematic" value="true"/>
       <arg name="x" value="$(arg x)"/>
       <arg name="y" value="$(arg y)"/>

@@ -7,3 +7,8 @@ $ git clone https://gitee.com/harbin-institute-of-technology-csc/drone_simulator
 $ cd ~/catkin_ws
 $ catkin_make
 ```
+## 运行结果
+查看模型
+```Bash
+$ roslaunch drone_description display.launch
+```

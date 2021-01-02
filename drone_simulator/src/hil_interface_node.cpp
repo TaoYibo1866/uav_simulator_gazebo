@@ -35,15 +35,15 @@ void odomCb(const OdometryConstPtr& odom)
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "hil_bridge");
-    ros::NodeHandle nh("~");
+    ros::init(argc, argv, "hil_interface");
+    ros::NodeHandle nh;
     ros::param::param<std::string>("~model_name", state_msg.model_name, "dji_m100");
     ros::param::param<int>("~div", freq_ctrl, 1);
     ros::param::param<double>("~x_offset", x_offset, 0);
     ros::param::param<double>("~y_offset", y_offset, 0);
     ros::param::param<double>("~z_offset", z_offset, 0);
     ros::param::param<double>("~yaw_offset", yaw_offset, 0);
-    ros::Subscriber odom_sub = nh.subscribe<Odometry>("odometry", 1, odomCb);
+    ros::Subscriber odom_sub = nh.subscribe<Odometry>("hil_odom", 1, odomCb);
     state_msg.reference_frame = "world";
     model_state_pub = nh.advertise<ModelState>("/gazebo/set_model_state", 1);
     ros::spin();

@@ -1,0 +1,18 @@
+<launch>
+
+  <arg name="model" default="dji_m100_default"/>
+  <arg name="namespace" default="dji_m100"/>
+
+  <!-- send the robot XML to param server -->
+  <param name="robot_description" command="
+    $(find xacro)/xacro.py '$(find drone_description)/urdf/$(arg model).xacro'
+    namespace:=$(arg namespace)
+    is_kinematic:=true
+    "/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find drone_description)/rviz/urdf.rviz"/>
+
+</launch>

@@ -31,13 +31,15 @@
     p2="0"
     cx="0.5"
     cy="0.5">
-    <xacro:cylinder_inertial_with_origin
-      radius="0.01"
-      length="0.005"
-      mass="0.12">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:cylinder_inertial_with_origin>
     <origin xyz="0 0 0.05" rpy="0 0 0" />
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.008 0.1 0.06"/>
+      </geometry>
+      <xacro:material_orange/>
+    </visual>
+    <material>Gazebo/Orange</material>
   </xacro:camera_macro>
 
   <xacro:if value="$(arg is_kinematic)">
