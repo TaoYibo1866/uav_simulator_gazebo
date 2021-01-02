@@ -7,7 +7,7 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "moving_gate");
     ros::NodeHandle nh;
-    ros::ServiceClient set_model_client = nh.serviceClient<SetModelState>("gazebo/set_model_state");
+    ros::ServiceClient set_model_client = nh.serviceClient<SetModelState>("/gazebo/set_model_state");
     SetModelState srv;
     srv.request.model_state.model_name = "square_gate";
     srv.request.model_state.pose.position.x = -3;

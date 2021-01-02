@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="model" default="dji_m100_default"/>
+  <arg name="model" default="dji_m100_gimbal_camera"/>
   <arg name="namespace" default="dji_m100"/>
 
   <!-- send the robot XML to param server -->
