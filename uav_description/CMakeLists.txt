@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(drone_simulator)
+project(uav_description)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -7,19 +7,7 @@ project(drone_simulator)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  geometry_msgs
-  image_transport
-  roscpp
-  rospy
-  std_msgs
-  message_filters
-  tf2
-  tf2_geometry_msgs
-  sensor_msgs
-  gazebo_msgs
-  nav_msgs
-)
+find_package(catkin REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -112,8 +100,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES drone_simulator
-#  CATKIN_DEPENDS roscpp
+#  LIBRARIES drone_description
+#  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
 
@@ -125,12 +113,12 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-  ${catkin_INCLUDE_DIRS}
+# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/drone_simulator.cpp
+#   src/${PROJECT_NAME}/drone_description.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -141,11 +129,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(hil_interface_node src/hil_interface_node.cpp)
-add_executable(dji_transport_node src/dji_transport_node.cpp)
-add_executable(gimbal_driver_node src/gimbal_driver_node.cpp)
-add_executable(image_timestamp_node src/image_timestamp_node.cpp)
-add_executable(demo_gimbal_control_node test/demo_gimbal_control_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/drone_description_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -155,32 +139,12 @@ add_executable(demo_gimbal_control_node test/demo_gimbal_control_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(hil_interface_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(dji_transport_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(gimbal_driver_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(image_timestamp_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(demo_gimbal_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(hil_interface_node
-  ${catkin_LIBRARIES}
-)
-
-target_link_libraries(dji_transport_node
-  ${catkin_LIBRARIES}
-)
-
-target_link_libraries(gimbal_driver_node
-  ${catkin_LIBRARIES}
-)
-
-target_link_libraries(image_timestamp_node
-  ${catkin_LIBRARIES}
-)
-
-target_link_libraries(demo_gimbal_control_node
-  ${catkin_LIBRARIES}
-)
+# target_link_libraries(${PROJECT_NAME}_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
@@ -229,7 +193,7 @@ target_link_libraries(demo_gimbal_control_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_drone_simulator.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_drone_description.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

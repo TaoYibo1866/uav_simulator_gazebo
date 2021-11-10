@@ -1,29 +1,25 @@
-# 无人机硬件在环仿真
-## 编译
+# uav_simulator
+## build
 ```Bash
-$ sudo apt-get install ros-kinetic-joint-state-publisher-gui
+$ sudo apt-get install ros-melodic-joint-state-publisher-gui
 $ cd ~/catkin_ws/src
-$ git clone https://gitee.com/harbin-institute-of-technology-csc/drone_simulator.git
+$ git clone https://github.com/TaoYibo1866/uav_simulator.git
 $ cd ~/catkin_ws
 $ catkin_make
 ```
-## 运行结果
-查看模型
+## run
 ```Bash
-$ roslaunch drone_description display.launch
+$ roslaunch uav_description display.launch
 ```
-![image](https://gitee.com/harbin-institute-of-technology-csc/drone_simulator/raw/master/dji_m100_gimbal_camera_rviz.png)
-精准穿越场景
+![image](dji_m100_gimbal_camera_rviz.png)
 ```Bash
-$ roslaunch drone_gazebo jing_zhun_chuan_yue.launch
+$ roslaunch uav_gazebo jing_zhun_chuan_yue.launch
 ```
-![image](https://gitee.com/harbin-institute-of-technology-csc/drone_simulator/raw/master/jing_zhun_chuan_yue.png)
-天宫筑塔场景
+![image](jing_zhun_chuan_yue.png)
 ```Bash
-$ roslaunch drone_gazebo tian_gong_zhu_ta.launch
+$ roslaunch uav_gazebo tian_gong_zhu_ta.launch
 ```
-大疆OSDK飞行数据回放
 ```Bash
-$ roslaunch drone_simulator tian_gong_zhu_ta_replay.launch
+$ roslaunch uav_simulator tian_gong_zhu_ta_replay.launch
 ```
-![image](https://gitee.com/harbin-institute-of-technology-csc/drone_simulator/raw/master/tian_gong_zhu_ta_replay.png)
+![image](tian_gong_zhu_ta_replay.png)

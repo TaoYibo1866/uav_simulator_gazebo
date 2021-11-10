@@ -4,7 +4,7 @@
 
   <xacro:arg name="is_kinematic" default="true"/>
   
-  <xacro:include filename="$(find drone_description)/urdf/dji_m100.xacro" />
+  <xacro:include filename="$(find uav_description)/urdf/dji_m100.xacro" />
 
   <xacro:if value="$(arg is_kinematic)">
     <gazebo reference="${namespace}/base_link">
