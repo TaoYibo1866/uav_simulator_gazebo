@@ -3,7 +3,7 @@
 ```Bash
 $ sudo apt-get install ros-melodic-joint-state-publisher-gui
 $ cd ~/catkin_ws/src
-$ git clone https://github.com/TaoYibo1866/uav_simulator.git
+$ git clone https://github.com/TaoYibo1866/uav_simulator_gazebo.git
 $ cd ~/catkin_ws
 $ catkin_make
 ```
